@@ -60,3 +60,17 @@ class CookbookSearchDelegate extends SearchDelegate {
     return Container();
   }
 }
+
+// 方便获取搜索入口图标的函数
+Widget getSearchIconWidget(BuildContext context) {
+  var searchWidget = IconButton(
+    icon: const Icon(
+      Icons.search,
+    ),
+    onPressed: () {
+      showSearch(context: context, delegate: CookbookSearchDelegate());
+    },
+  );
+
+  return searchWidget;
+}

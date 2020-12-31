@@ -1,6 +1,8 @@
 // 底部导航选择分类时的页面
 import 'package:flutter/material.dart';
 
+import 'package:my_app/constants.dart';
+
 // 分类页面
 class ClassificationPage extends StatefulWidget {
   @override
@@ -16,7 +18,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
         // backgroundColor: Colors.white, // 设置顶部 bar 颜色为白色
         // elevation: 0, // 取消阴影
         title: const Text(
-          "分类页面",
+          CLASSIFICATION_PAGE_TITLE,
           style: TextStyle(color: Colors.black),
         ),
         // actions: <Widget>[

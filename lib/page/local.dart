@@ -1,6 +1,8 @@
 // 底部导航选择本地时的页面
 import 'package:flutter/material.dart';
 
+import 'package:my_app/constants.dart';
+
 // 本地页面
 class LocalPage extends StatefulWidget {
   @override
@@ -16,7 +18,7 @@ class _LocalPageState extends State<LocalPage> {
         // backgroundColor: Colors.white, // 设置顶部 bar 颜色为白色
         // elevation: 0, // 取消阴影
         title: const Text(
-          "本地页面",
+          LOCAL_PAGE_TITLE,
           style: TextStyle(color: Colors.black),
         ),
         // actions: <Widget>[
