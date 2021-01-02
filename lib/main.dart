@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
       // App 主题及信息设置
       title: APP_TITLE,
       theme: ThemeData(
-        primarySwatch: APP_PRIMARY_Swatch,
+        //primarySwatch: APP_PRIMARY_Swatch,
+        //正在测试用保存在values目录下的colors.dart更灵活的控制颜色
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
 

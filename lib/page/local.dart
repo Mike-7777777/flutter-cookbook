@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:my_app/constants.dart';
+import 'package:my_app/values/colors.dart';
 
 // 本地页面
 class LocalPage extends StatefulWidget {
@@ -19,7 +20,7 @@ class _LocalPageState extends State<LocalPage> {
         // elevation: 0, // 取消阴影
         title: const Text(
           LOCAL_PAGE_TITLE,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: AppColors.primaryBackground),
         ),
         // actions: <Widget>[
         //   IconButton(

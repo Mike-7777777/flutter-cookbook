@@ -5,6 +5,7 @@ import 'package:my_app/page/classification.dart';
 import 'package:my_app/page/home.dart';
 import 'package:my_app/page/local.dart';
 import 'package:my_app/constants.dart';
+import 'package:my_app/values/values.dart';
 
 // 页面
 class MyAppPage extends StatefulWidget {
@@ -36,16 +37,19 @@ class _MyAppPageState extends State<MyAppPage> {
   // 底部导航按钮集合
   static const items = const <BottomNavigationBarItem>[
     BottomNavigationBarItem(
-      icon: Icon(Icons.home_outlined),
+      icon: Icon(Icons.home_rounded),
       label: HOME_PAGE_LABEL,
+      backgroundColor: AppColors.primaryElement,
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.folder_open),
+      icon: Icon(Icons.category_rounded),
       label: CLASSIFICATION_PAGE_LABEL,
+      backgroundColor: AppColors.primaryElement,
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.download_outlined),
+      icon: Icon(Icons.download_rounded),
       label: LOCAL_PAGE_LABEL,
+      backgroundColor: AppColors.primaryElement,
     ),
   ];
 
@@ -58,6 +62,12 @@ class _MyAppPageState extends State<MyAppPage> {
       currentIndex: _selectedIndex,
       // 底部导航点击事件
       onTap: _onItemTapped,
+      //fixed模式导航栏背景色
+      //backgroundColor: AppColors.pink,
+      //选中后的颜色
+      fixedColor: AppColors.primaryElementText,
+      //排布模式
+      type: BottomNavigationBarType.shifting,
     );
 
     // 页面框架
