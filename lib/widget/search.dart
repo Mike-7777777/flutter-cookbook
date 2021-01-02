@@ -1,5 +1,6 @@
 // 搜索框实现
 import 'package:flutter/material.dart';
+import 'package:my_app/values/colors.dart';
 
 // 基于官方 SearchDelegate 实现搜索框
 class CookbookSearchDelegate extends SearchDelegate {
@@ -66,6 +67,7 @@ Widget getSearchIconWidget(BuildContext context) {
   var searchWidget = IconButton(
     icon: const Icon(
       Icons.search,
+      color: AppColors.primaryText,
     ),
     onPressed: () {
       showSearch(context: context, delegate: CookbookSearchDelegate());
