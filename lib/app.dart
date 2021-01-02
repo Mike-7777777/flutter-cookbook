@@ -39,17 +39,17 @@ class _MyAppPageState extends State<MyAppPage> {
     BottomNavigationBarItem(
       icon: Icon(Icons.home_rounded),
       label: HOME_PAGE_LABEL,
-      backgroundColor: AppColors.primaryElement,
+      backgroundColor: AppColors.primaryBackground,
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.category_rounded),
       label: CLASSIFICATION_PAGE_LABEL,
-      backgroundColor: AppColors.primaryElement,
+      backgroundColor: AppColors.primaryBackground,
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.download_rounded),
       label: LOCAL_PAGE_LABEL,
-      backgroundColor: AppColors.primaryElement,
+      backgroundColor: AppColors.primaryBackground,
     ),
   ];
 
@@ -65,7 +65,8 @@ class _MyAppPageState extends State<MyAppPage> {
       //fixed模式导航栏背景色
       //backgroundColor: AppColors.pink,
       //选中后的颜色
-      fixedColor: AppColors.primaryElementText,
+      fixedColor: AppColors.primaryElement,
+      unselectedItemColor: AppColors.primaryText,
       //排布模式
       type: BottomNavigationBarType.shifting,
     );

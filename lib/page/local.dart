@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:my_app/constants.dart';
-import 'package:my_app/values/colors.dart';
+import 'package:my_app/values/values.dart';
 
 // 本地页面
 class LocalPage extends StatefulWidget {
@@ -16,11 +16,11 @@ class _LocalPageState extends State<LocalPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // backgroundColor: Colors.white, // 设置顶部 bar 颜色为白色
-        // elevation: 0, // 取消阴影
+        backgroundColor: AppColors.primaryBackground, // 设置顶部 bar 颜色为白色
+        //elevation: 0, // 取消阴影
         title: const Text(
           LOCAL_PAGE_TITLE,
-          style: TextStyle(color: AppColors.primaryBackground),
+          style: TextStyle(color: AppColors.primaryText),
         ),
         // actions: <Widget>[
         //   IconButton(

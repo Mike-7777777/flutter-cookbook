@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_app/widget/cookbook-card.dart';
 import 'package:my_app/widget/logo.dart';
 import 'package:my_app/widget/search.dart';
+import 'package:my_app/values/values.dart';
 
 // 本地页面
 class HomePage extends StatefulWidget {
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
     // 页面框架
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.primaryBackground, // 设置顶部 bar 颜色为白色
         title: LogoWidget.getInstance(),
         actions: <Widget>[searchIconWidget],
       ),

@@ -1,5 +1,6 @@
 // 单例模式的 Logo 组件
 import 'package:flutter/material.dart';
+import 'package:my_app/values/colors.dart';
 
 // 单例模式，使用 LogoWidget.getInstance() 获得单例对象
 class LogoWidget extends StatelessWidget {
@@ -13,6 +14,9 @@ class LogoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Logo");
+    return Text(
+      "Logo",
+      style: TextStyle(color: AppColors.primaryText),
+    );
   }
 }
