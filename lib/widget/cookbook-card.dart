@@ -1,6 +1,8 @@
 // 菜谱卡片组件
 import 'package:flutter/material.dart';
 
+import 'package:my_app/widget/cookbook-detail.dart';
+
 // 定义为无状态组件
 class CookbookCard extends StatelessWidget {
   @override
@@ -37,6 +39,15 @@ class CookbookCard extends StatelessWidget {
       children: [rPic, title],
     );
 
-    return column;
+    // 添加点击事件
+    var inkColumn = InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return CookbookDetail().build(context);
+        }));
+      },
+      child: column,
+    );
+    return inkColumn;
   }
 }

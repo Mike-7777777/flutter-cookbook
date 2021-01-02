@@ -6,7 +6,15 @@ import 'package:flutter/material.dart';
 class CookbookDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      body: Center(
+        child: TextButton(
+          child: Text('菜谱详情页，点击返回'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+    );
   }
 }
