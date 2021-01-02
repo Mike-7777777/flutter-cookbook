@@ -12,3 +12,6 @@ const CLASSIFICATION_PAGE_TITLE = "分类页面";
 
 const LOCAL_PAGE_LABEL = "本地";
 const LOCAL_PAGE_TITLE = "本地页面";
+
+const LOCAL_PAGE_GASHAPON_TITLE = "扭蛋机";
+const LOCAL_PAGE_RECOMMEND_TITLE = "推荐菜谱";
