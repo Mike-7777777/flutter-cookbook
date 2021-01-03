@@ -138,8 +138,10 @@ List<Widget> getYuanlilaoChildren() {
   return list;
 }
 
+// 步骤循环
 List<Widget> getBuzhouChildren() {
   var list = <Widget>[];
+  //https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20191101%2F17%2F1572601975-NVzXavQCRt.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg
   for (int i = 0; i < 10; i++) {
     list.add(
       Container(

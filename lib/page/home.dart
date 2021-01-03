@@ -69,8 +69,18 @@ List<Widget> getListChildren() {
   // 待添加，摇蛋机ui
   list.add(Container());
   list.add(Container(
-    height: 50,
-  ));
+      height: 50,
+      child: ElevatedButton(
+        onPressed: _log,
+        child: Text("浮动按钮"),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(AppColors.primaryElement),
+          foregroundColor:
+              MaterialStateProperty.all(AppColors.primaryElementText),
+        ),
+        //color: AppColors.primaryElement,
+        //textColor: AppColors.primaryElementText),
+      )));
 
   // 推荐菜谱标题
   list.add(const Padding(
@@ -111,4 +121,8 @@ List<Widget> getGridChildren() {
     ));
   }
   return list;
+}
+
+_log() {
+  print("点击了按钮");
 }
