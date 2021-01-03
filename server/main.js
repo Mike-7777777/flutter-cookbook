@@ -1,12 +1,18 @@
 const Koa = require('koa')
+const KoaStatic = require("koa-static")
 
-const Config = require("./config")
-const Router = require("./router")
+const config = require("./config")
+const router = require("./router")
 
 const app = new Koa()
 
-app.use(Router.routes())
+// 静态文件
+app.use(KoaStatic(__dirname + "/asserts"))
 
-app.listen(Config.listenPort, Config.listenAddress)
+// 路由
+app.use(router.routes())
 
-console.log('Server starting at port', Config.listenPort)
+// 启动服务器监听
+app.listen(config.listenPort, config.listenAddress)
+
+console.log('Server starting at port', config.listenPort)
