@@ -203,7 +203,7 @@ List<Widget> getBuzhouChildren() {
             ),
           ),
           child: Text(
-            "步骤 $i",
+            "步骤 $i ....",
           )),
     );
   }
