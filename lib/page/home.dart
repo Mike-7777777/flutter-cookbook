@@ -65,10 +65,41 @@ List<Widget> getListChildren() {
       ),
     ),
   );
+  // 图片，指定为保证高度完全显示
+  var pic = Image(
+    image: new AssetImage("assets/ndj.jpg"),
+    fit: BoxFit.fitHeight,
+  );
 
-  // 待添加，摇蛋机ui
-  list.add(Container(
-    height: 50,
+  // 固定图片宽度为一比一
+  var arPic = AspectRatio(
+    aspectRatio: 3 / 2,
+    child: pic,
+  );
+
+  // 图片圆角
+  var rPic = ClipRRect(
+    borderRadius: BorderRadius.circular(6.0),
+    child: arPic,
+  );
+
+  // 摇蛋机ui
+  // 还没写点击事件
+  list.add(Container());
+  list.add(Padding(
+    padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 10.0),
+    //onPressed: _log,
+    child: rPic,
+    //child: ElevatedButton(
+    //child: Text("浮动按钮"),
+    //style: ButtonStyle(
+    //  backgroundColor: MaterialStateProperty.all(AppColors.primaryElement),
+    //  foregroundColor:
+    //      MaterialStateProperty.all(AppColors.primaryElementText),
+    //),
+    //color: AppColors.primaryElement,
+    //textColor: AppColors.primaryElementText),
+    //));
   ));
 
   // 推荐菜谱标题
@@ -110,4 +141,8 @@ List<Widget> getGridChildren() {
     ));
   }
   return list;
+}
+
+_log() {
+  print("点击了按钮");
 }
