@@ -100,6 +100,37 @@ List<Widget> getListChildren() {
       ),
     ),
   );
+  // 5. 下载按钮
+  list.add(Padding(
+    padding: EdgeInsets.fromLTRB(16, 16.0, 16.0, 100.0),
+    child: Builder(
+      builder: (ctx) => ElevatedButton(
+        onPressed: () {
+          print("点击了按钮");
+          final snackBar = SnackBar(
+            content: Text('已添加到下载列表中'),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            ),
+          );
+          // Find the Scaffold in the widget tree and use
+          // it to show a SnackBar.
+          Scaffold.of(ctx).showSnackBar(snackBar);
+        },
+        child: Text("Download this recipe"),
+      ),
+    ),
+  ));
+  //返回按钮
+  list.add(
+    Padding(
+      padding: EdgeInsets.fromLTRB(16, 16.0, 16.0, 100.0),
+      child: BackButton(),
+    ),
+  );
   return list;
 }
 
