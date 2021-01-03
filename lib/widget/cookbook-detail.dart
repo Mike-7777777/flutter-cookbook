@@ -11,6 +11,7 @@ class CookbookDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _getPageBody(),
+      backgroundColor: AppColors.primaryBackground,
     );
   }
 }
@@ -79,88 +80,83 @@ List<Widget> getListChildren() {
       child: ListView(
         // This next line does the trick.
         scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          Container(
-              width: 160.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.0),
-                color: Colors.red,
-              ),
-              child: Text(
-                "原料1",
-              )),
-          Container(
-            width: 160.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              color: Colors.blue,
-            ),
-            child: Text(
-              "原料2",
-            ),
-          ),
-          Container(
-            width: 160.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              color: Colors.green,
-            ),
-            child: Text(
-              "原料3",
-            ),
-          ),
-          Container(
-            width: 160.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              color: Colors.yellow,
-            ),
-            child: Text(
-              "原料4",
-            ),
-          ),
-          Container(
-            width: 160.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              color: Colors.orange,
-            ),
-            child: Text(
-              "原料5",
-            ),
-          ),
-        ],
+        children: getYuanlilaoChildren(),
       )));
-
-  // 添加推荐菜谱内容
+  // 4. 步骤
   list.add(
     // 固定列数的 GridView
     Padding(
-      padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+      padding: EdgeInsets.fromLTRB(16, 16.0, 16.0, 100.0),
       child: GridView.count(
         childAspectRatio: 81 / 100,
         // 设置列数
-        crossAxisCount: 2,
+        crossAxisCount: 1,
         // 解决 GridView 嵌套在 ListView 中报错问题
         shrinkWrap: true,
         // 解决 GridView 嵌套在 ListView 中无法滑动问题
         physics: new NeverScrollableScrollPhysics(),
         // 设置内容
-        children: getGridChildren(),
+        children: getBuzhouChildren(),
       ),
     ),
   );
-
   return list;
 }
 
-List<Widget> getGridChildren() {
+List<Widget> getYuanlilaoChildren() {
   var list = <Widget>[];
   for (int i = 0; i < 10; i++) {
-    list.add(Padding(
-      padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 10.0),
-      child: CookbookCard(),
-    ));
+    list.add(
+      Container(
+          //此处padding对BoxDecoration(红色框)无效
+          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+          width: 160.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.0),
+            //背景色
+            color: Colors.red,
+            //加粗box的border，让每个box不粘在一起
+            border: Border.all(
+              color: AppColors.primaryBackground,
+              width: 6,
+            ),
+            image: DecorationImage(
+              scale: 10,
+              image: NetworkImage(
+                  'https://www.pinclipart.com/picdir/middle/529-5297054_pork-meat-food-clipart-png.png'),
+              fit: BoxFit.fitWidth,
+              //图片出现在中下
+              alignment: Alignment(0, 1),
+            ),
+          ),
+          child: Text(
+            "原料 $i",
+            textAlign: TextAlign.center,
+          )),
+    );
+  }
+  return list;
+}
+
+List<Widget> getBuzhouChildren() {
+  var list = <Widget>[];
+  for (int i = 0; i < 10; i++) {
+    list.add(
+      Container(
+          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+          width: 160.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.0),
+            color: AppColors.primaryElement,
+            border: Border.all(
+              color: AppColors.primaryBackground,
+              width: 6,
+            ),
+          ),
+          child: Text(
+            "步骤 $i",
+          )),
+    );
   }
   return list;
 }
