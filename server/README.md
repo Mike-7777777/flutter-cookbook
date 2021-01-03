@@ -77,8 +77,9 @@
 
 菜谱和分类信息之间的连接关系
 
+备注：c_id 与 t_id 为 联合主键
+
 |列|说明|类型|
 | -------- | --------- | ---------- |
-|id|主键|INTEGER|
 |c_id|cookbooks的主键|INTEGER|
 |t_id|tags的主键|INTEGER|
