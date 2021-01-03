@@ -1,8 +1,9 @@
 const Koa = require('koa')
 const KoaStatic = require("koa-static")
 
-const config = require("./tools/config")
-const router = require("./controllers/router")
+const config = require("./config")
+const cookbooksRouter = require("./controllers/cookbooks")
+const indexRouter = require("./controllers/index")
 
 const app = new Koa()
 
@@ -10,7 +11,8 @@ const app = new Koa()
 app.use(KoaStatic(__dirname + "/asserts"))
 
 // 路由
-app.use(router.routes())
+app.use(indexRouter.routes())
+app.use(cookbooksRouter.routes())
 
 // 启动服务器监听
 app.listen(config.listenPort, config.listenAddress)

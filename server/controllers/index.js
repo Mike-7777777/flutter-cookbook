@@ -1,8 +1,9 @@
 // url -> /
+const Koa_Router = require("koa-router")
+const router = new Koa_Router()
 
-const db = require("../services/common").db
-
-async function get(ctx){
+router.get("/",async ctx => {
     ctx.body = "Hellow Koa";
-}
-module.exports.get = get
+})
+
+module.exports = router
