@@ -2,10 +2,10 @@ const Koa_Router = require("koa-router")
 
 const router = new Koa_Router()
 
-const index = require("./controllers/index")
+const index = require("./index")
 router.get("/",index.get)
 
-const cookbook = require("./controllers/cookbook")
+const cookbook = require("./cookbook")
 router.get("/cookbook",cookbook.get)
 
 module.exports = router

@@ -28,6 +28,7 @@
 |列|说明|类型|
 | -------- | --------- | ---------- |
 |id|主键|INTEGER|
+|p_id|pictures的主键，封面图|INTEGER|
 |title|菜谱名称|TEXT|
 |brief|菜谱简介|TEXT|
 
@@ -39,8 +40,8 @@
 | -------- | --------- | ---------- |
 |id|主键|INTEGER|
 |c_id|cookbooks的主键|INTEGER|
+|p_id|pictures，原料图片|INTEGER|
 |name|原料名称|TEXT|
-|consumption|用量|TEXT|
 
 ### cook_steps
 
@@ -50,6 +51,8 @@
 | -------- | --------- | ---------- |
 |id|主键|INTEGER|
 |c_id|cookbooks的主键|INTEGER|
+|p_id|pictures的主键|INTEGER|
+|number|步骤号|INTEGER|
 |description|步骤描述|TEXT|
 
 ### pictures
@@ -69,26 +72,6 @@
 | -------- | --------- | ---------- |
 |id|主键|INTEGER|
 |name|分类名称|TEXT|
-
-### c2p
-
-菜谱与图片之间的连接关系
-
-|列|说明|类型|
-| -------- | --------- | ---------- |
-|id|主键|INTEGER|
-|c_id|cookbooks的主键|INTEGER|
-|p_id|pictures的主键|INTEGER|
-
-### cs2p
-
-菜谱每一步和图片之间的关系
-
-|列|说明|类型|
-| -------- | --------- | ---------- |
-|id|主键|INTEGER|
-|cs_id|cook_steps的主键|INTEGER|
-|p_id|pictures的主键|INTEGER|
 
 ### c2t
 

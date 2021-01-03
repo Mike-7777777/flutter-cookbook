@@ -1,8 +1,8 @@
 const Koa = require('koa')
 const KoaStatic = require("koa-static")
 
-const config = require("./config")
-const router = require("./router")
+const config = require("./tools/config")
+const router = require("./controllers/router")
 
 const app = new Koa()
 

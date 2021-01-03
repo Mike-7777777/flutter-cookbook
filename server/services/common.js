@@ -3,8 +3,8 @@ const path = require("path")
 
 const sqlite3 = require('sqlite3').verbose()
 
-const config = require("../config")
-const tools = require("../tools")
+const config = require("../tools/config")
+const tools = require("../tools/path")
 
 const database = initDatabase()
 module.exports.db = database
@@ -21,6 +21,7 @@ function initDatabase() {
 function initTable(db) {
     db.run(`CREATE TABLE IF NOT EXISTS cookbooks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        p_id INTEGER,
         title TEXT,
         brief TEXT
     );`)
@@ -28,13 +29,15 @@ function initTable(db) {
     db.run(`CREATE TABLE IF NOT EXISTS ingredients (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         c_id INTEGER,
-        name TEXT,
-        consumption TEXT
+        p_id INTEGER,
+        name TEXT
     );`)
 
     db.run(`CREATE TABLE IF NOT EXISTS cook_steps (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         c_id INTEGER,
+        p_id INTEGER,
+        number INTEGER,
         description TEXT
     );`)
 
@@ -48,21 +51,9 @@ function initTable(db) {
         name TEXT
     );`)
 
-    db.run(`CREATE TABLE IF NOT EXISTS c2p (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        c_id INTEGER,
-        p_id INTEGER
-    );`)
-
-    db.run(`CREATE TABLE IF NOT EXISTS cs2p (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        cs_id INTEGER,
-        p_id INTEGER
-    );`)
-
     db.run(`CREATE TABLE IF NOT EXISTS c2t (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
         c_id INTEGER,
-        t_id INTEGER
+        t_id INTEGER,
+        PRIMARY KEY (c_id,t_id)
     );`)
 }
