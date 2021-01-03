@@ -43,14 +43,19 @@ List<Widget> getListChildren() {
         "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201510%2F20%2F20151020195211_hTCFE.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611990647&t=602b503888a90b3dfcc633cc330955ea"),
     fit: BoxFit.fitHeight,
   );
+  // 菜谱标题
   // 字体样式未来[低优先级]也可以整合在values文件加中的fonts.dart文件中
   var title = Text(
     "菜谱标题，有可能很长长长长长长长长长长长长长长长长长长长长长长长长长长。",
-    maxLines: 2, overflow: TextOverflow.ellipsis, style: titleStyle,
+    maxLines: 9, overflow: TextOverflow.ellipsis, style: titleStyle,
     //TextStyle(height: 1.5, fontWeight: FontWeight.w600, fontSize: 25.0),
   );
-  //
-
+  //菜谱简介
+  var intro = Text(
+    "菜谱简介，有可能很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长。",
+    maxLines: 9,
+    overflow: TextOverflow.ellipsis,
+  );
   // 下面这部分和cookbook-card.dart中的样式(除比例外)完全重复，有空可以把这两种样式单独摘出来放到values文件夹里的picStyle.dart里面，用的时候直接调用。
   // 固定图片宽度为一比一
   var arPic = AspectRatio(
@@ -73,6 +78,9 @@ List<Widget> getListChildren() {
   // 2. 菜谱名字
   list.add(Padding(
       padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 10.0), child: title));
+  // 3. 菜谱介绍
+  list.add(Padding(
+      padding: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0), child: intro));
   // 3. 菜品原料
   list.add(Container(
       padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 10.0),
@@ -184,6 +192,14 @@ List<Widget> getBuzhouChildren() {
             border: Border.all(
               color: AppColors.primaryBackground,
               width: 6,
+            ),
+            image: DecorationImage(
+              scale: 10,
+              image: NetworkImage(
+                  'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20191101%2F17%2F1572601975-NVzXavQCRt.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg'),
+              fit: BoxFit.fitWidth,
+              //图片出现在中下
+              alignment: Alignment(0, 1),
             ),
           ),
           child: Text(
