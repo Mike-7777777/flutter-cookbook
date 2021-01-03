@@ -67,6 +67,7 @@ List<Widget> getListChildren() {
   );
 
   // 待添加，摇蛋机ui
+  list.add(Container());
   list.add(Container(
     height: 50,
   ));
