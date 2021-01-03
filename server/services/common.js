@@ -1,4 +1,5 @@
 // 共用组件:如 database
+const path = require("path")
 
 const sqlite3 = require('sqlite3').verbose()
 
