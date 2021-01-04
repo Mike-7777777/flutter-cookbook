@@ -68,11 +68,53 @@ function queryById(id) {
 }
 module.exports.queryById = queryById
 
-// 根据关键词搜索一些菜谱
-function queryByKeyword() {
-    
+// 根据关键词搜索一些菜谱，keyword：string
+function queryByKeyword(keyword) {
+    let sqlQueryCookbook = `
+        SELECT
+        a.id,
+        a.title,
+        a.brief,
+        b.url as priview
+        FROM cookbooks as a
+        LEFT JOIN pictures as b ON a.p_id = b.id
+        WHERE a.title LIKE ?
+        OR a.brief LIKE ?
+    `
+    let likeKeyword = `%${keyword}%`;
+    console.log(likeKeyword)
+    let cookbooks = db.prepare(sqlQueryCookbook).all(likeKeyword,likeKeyword)
+
+    return cookbooks
 }
-module.exports.queryByKeyword = queryByKeyword
+
+// 根据分类和关键词搜索一些菜谱，tagId：int，keyword：string
+function queryByTagIdAndKeyword(tagId, keyword) {
+    if (tagId == null ) {
+        return queryByKeyword(keyword)
+    }
+
+    let sqlQueryCookbook = `
+        SELECT
+        a.id,
+        a.title,
+        a.brief,
+        b.url as priview
+        FROM cookbooks as a
+        LEFT JOIN pictures as b ON a.p_id = b.id
+        WHERE a.id
+            IN (SELECT c.c_id
+            FROM c2t as c
+            WHERE c.t_id = ?)
+        AND (a.title LIKE ?
+        OR a.brief LIKE ?)
+    `
+    let likeKeyword = `%${keyword}%`;
+    let cookbooks = db.prepare(sqlQueryCookbook).all(tagId,likeKeyword,likeKeyword)
+
+    return cookbooks
+}
+module.exports.queryByTagIdAndKeyword = queryByTagIdAndKeyword
 
 // 根据分类搜索菜谱，参数为 tagId：int
 function queryByTag(tagId) {
@@ -94,10 +136,3 @@ function queryByTag(tagId) {
     return cookbooks
 }
 module.exports.queryByTag = queryByTag
-
-// 根据多个分类搜索菜谱，参数为 tagIds: []int
-function queryByTags(tagIds) {
-    
-}
-module.exports.queryByTags = queryByTags
-

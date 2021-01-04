@@ -7,11 +7,10 @@ const cS = require("../services/cookbook")
 router.get("/cookbooks",async ctx => {
     let query = ctx.request.query
     let res = {};
-    if (query.tagIds) {
-        console.log("tags")
-        res = cS.queryByTags()
-    }else if (query.tagId){
-        console.log("tag")
+
+    if (query.keyword) {
+        res = cS.queryByTagIdAndKeyword(query.tagId, query.keyword)
+    } else if (query.tagId){
         res = cS.queryByTag(query.tagId)
     }else {
         res = cS.queryAll()
