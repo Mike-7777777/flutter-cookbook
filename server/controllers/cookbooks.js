@@ -5,7 +5,19 @@ const router = new Koa_Router()
 const cS = require("../services/cookbook")
 
 router.get("/cookbooks",async ctx => {
-    ctx.body = JSON.stringify(cS.queryAll())
+    let query = ctx.request.query
+    let res = {};
+    if (query.tagIds) {
+        console.log("tags")
+        res = cS.queryByTags()
+    }else if (query.tagId){
+        console.log("tag")
+        res = cS.queryByTag(query.tagId)
+    }else {
+        res = cS.queryAll()
+    }
+
+    ctx.body = JSON.stringify(res)
 })
 
 router.get("/cookbooks/detail",async ctx => {
@@ -25,6 +37,7 @@ router.get("/cookbooks/detail",async ctx => {
 
     ctx.body = JSON.stringify(data)
 })
+
 
 function responseError(ctx,msg){
     ctx.body = msg
