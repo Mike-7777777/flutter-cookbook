@@ -42,6 +42,8 @@ class CookbookCard extends StatelessWidget {
     // 添加点击事件
     var inkColumn = InkWell(
       onTap: () {
+        //如果Card作为菜谱也作为类别，点击后需要判断是菜谱还是类别。
+        //如果是菜谱则跳转CookbookDetail，否则跳转CookbookCate。
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
           return CookbookDetail().build(context);
         }));
