@@ -6,7 +6,7 @@ const tS = require("../services/tag")
 
 router.get("/tags",async ctx => {
     let res = tS.queryAll()
-    ctx.body = JSON.stringify(res)
+    ctx.body = res
 })
 
 module.exports = router

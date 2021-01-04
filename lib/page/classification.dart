@@ -2,8 +2,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:my_app/constants.dart';
+import 'package:my_app/model/tag.dart';
+import 'package:my_app/requester/tags.dart';
 import 'package:my_app/values/values.dart';
-import 'package:my_app/widget/cookbook-card.dart';
+// import 'package:my_app/widget/cookbook-card.dart';
+import 'package:my_app/widget/tag-card.dart';
 
 // 分类页面
 class ClassificationPage extends StatefulWidget {
@@ -23,32 +26,27 @@ class _ClassificationPageState extends State<ClassificationPage> {
           CLASSIFICATION_PAGE_TITLE,
           style: TextStyle(color: AppColors.primaryText),
         ),
-
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: const Icon(
-        //       Icons.search,
-        //       color: Colors.black,
-        //     ),
-        //     onPressed: () {
-        //       showSearch(
-        //           context: context, delegate: CookbookSearchDelegate());
-        //     },
-        //   ),
-        // ]
       ),
       body: _getPageBody(),
     );
   }
 
   Widget _getPageBody() {
-    var listview = ListView(
-      children: getListChildren(),
+    var fb = FutureBuilder(
+      future: TagsRequester.queryAll(),
+      initialData: [], // 初始数据，会在网络加载时被当做结果使用
+      builder: (context, snapshot) {
+        print(snapshot);
+        return ListView(
+          children: getListChildren(snapshot.data),
+        );
+      },
     );
-    return listview;
+
+    return fb;
   }
 
-  List<Widget> getListChildren() {
+  List<Widget> getListChildren(tags) {
     // 组件数组
     var list = <Widget>[];
 
@@ -66,7 +64,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
           // 解决 GridView 嵌套在 ListView 中无法滑动问题
           physics: new NeverScrollableScrollPhysics(),
           // 设置内容
-          children: getGridChildren(),
+          children: getGridChildren(tags),
         ),
       ),
     );
@@ -74,14 +72,26 @@ class _ClassificationPageState extends State<ClassificationPage> {
   }
 
   //如果搜索实现了搜索tag，可以考虑跳转到搜索页面加tag参数，这样可以少做一点页面
-  List<Widget> getGridChildren() {
+  List<Widget> getGridChildren(tags) {
     var list = <Widget>[];
-    for (int i = 0; i < 7; i++) {
-      list.add(Padding(
-        padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-        child: CookbookCard(),
-      ));
+
+    for (var tag in tags) {
+      var t = Tag();
+      t.id = tag["id"];
+      t.name = tag["name"];
+      list.add(
+        Padding(
+          padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
+          child: TagCard(t),
+        ),
+      );
     }
+    // for (int i = 0; i < 7; i++) {
+    //   list.add(Padding(
+    //     padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
+    //     child: CookbookCard(),
+    //   ));
+    // }
     return list;
   }
 }

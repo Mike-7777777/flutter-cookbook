@@ -16,7 +16,7 @@ router.get("/cookbooks",async ctx => {
         res = cS.queryAll()
     }
 
-    ctx.body = JSON.stringify(res)
+    ctx.body = res
 })
 
 router.get("/cookbooks/detail",async ctx => {
@@ -34,7 +34,7 @@ router.get("/cookbooks/detail",async ctx => {
     // 查询数据
     let data = cS.queryById(query.id)
 
-    ctx.body = JSON.stringify(data)
+    ctx.body = data
 })
 
 

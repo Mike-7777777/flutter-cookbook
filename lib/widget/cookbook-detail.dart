@@ -1,9 +1,7 @@
 // 菜谱详细
 
 import 'package:flutter/material.dart';
-import 'package:my_app/constants.dart';
 import 'package:my_app/values/colors.dart';
-import 'package:my_app/widget/cookbook-card.dart';
 
 // 定义为无状态组件
 class CookbookDetail extends StatelessWidget {

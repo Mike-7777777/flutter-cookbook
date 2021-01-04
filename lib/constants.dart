@@ -1,4 +1,15 @@
 // 常量统一管理
+
+// 后端服务器ip
+const BACKEND_HOST = "10.0.3.2";
+// 后端服务器端口
+const BACKEND_PORT = "3838";
+// 后端服务器地址
+const BACKEND_ADDRESS = "http://$BACKEND_HOST:$BACKEND_PORT";
+
+// 分类图片本地地址
+const TAG_IMAGE_FOLDER = "assets/category";
+
 const APP_TITLE = "Flutter Demo";
 //const APP_PRIMARY_Swatch = Colors.blue;
 //正在测试用保存在values目录下的colors.dart更灵活的控制颜色
@@ -14,3 +25,5 @@ const LOCAL_PAGE_TITLE = "Download";
 
 const LOCAL_PAGE_GASHAPON_TITLE = "扭蛋机";
 const LOCAL_PAGE_RECOMMEND_TITLE = "推荐菜谱";
+
+const SEARCH_HINT = "输入关键词搜索";

@@ -1,15 +1,21 @@
 // 搜索框实现
 import 'package:flutter/material.dart';
+import 'package:my_app/model/tag.dart';
+import 'package:my_app/requester/cookbooks.dart';
 import 'package:my_app/values/colors.dart';
+
+import 'package:my_app/constants.dart';
 
 // 基于官方 SearchDelegate 实现搜索框
 class CookbookSearchDelegate extends SearchDelegate {
   int count = 0;
+  Tag tag;
+  CookbookSearchDelegate(this.tag);
 
   // 修改搜索输入提示文字
   // 解决方案来自 https://stackoverflow.com/questions/54518741/flutter-change-search-hint-text-of-searchdelegate
   @override
-  String get searchFieldLabel => "输入关键词搜索";
+  String get searchFieldLabel => SEARCH_HINT;
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -51,7 +57,18 @@ class CookbookSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     // 构建搜索结果并返回
-    return Text("124");
+    return FutureBuilder(
+      future: CookbooksRequester.queryAll(),
+      initialData: [],
+      builder: (context, snapshot) {
+        var datas = snapshot.data;
+        List<Widget> list = [];
+        for (var data in datas) {
+          list.add(Text(data["title"]));
+        }
+        return ListView(children: list);
+      },
+    );
   }
 
   @override
@@ -64,13 +81,17 @@ class CookbookSearchDelegate extends SearchDelegate {
 
 // 方便获取搜索入口图标的函数
 Widget getSearchIconWidget(BuildContext context) {
+  return getSearchIconWidgetWithTag(context, null);
+}
+
+Widget getSearchIconWidgetWithTag(BuildContext context, Tag tag) {
   var searchWidget = IconButton(
     icon: const Icon(
       Icons.search,
       color: AppColors.primaryText,
     ),
     onPressed: () {
-      showSearch(context: context, delegate: CookbookSearchDelegate());
+      showSearch(context: context, delegate: CookbookSearchDelegate(tag));
     },
   );
 
