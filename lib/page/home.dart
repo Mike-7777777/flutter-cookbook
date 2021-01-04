@@ -1,6 +1,8 @@
 // 底部导航选择主页时的页面
+
 import 'package:flutter/material.dart';
 import 'package:my_app/widget/cookbook-card.dart';
+import 'package:my_app/widget/cookbook-detail.dart';
 import 'package:my_app/widget/logo.dart';
 import 'package:my_app/widget/search.dart';
 import 'package:my_app/values/values.dart';
@@ -83,13 +85,23 @@ List<Widget> getListChildren() {
     child: arPic,
   );
 
+  //点击事件
+  var inkRpic = Builder(
+      builder: (context) => InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return CookbookDetail().build(context);
+              }));
+            },
+            child: rPic,
+          ));
+
   // 摇蛋机ui
-  // 还没写点击事件
   list.add(Container());
   list.add(Padding(
     padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 10.0),
-    //onPressed: _log,
-    child: rPic,
+    // 点击事件
+    child: inkRpic,
     //child: ElevatedButton(
     //child: Text("浮动按钮"),
     //style: ButtonStyle(
@@ -141,8 +153,4 @@ List<Widget> getGridChildren() {
     ));
   }
   return list;
-}
-
-_log() {
-  print("点击了按钮");
 }
