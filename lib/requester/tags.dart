@@ -1,7 +1,7 @@
 // 网络请求
 import 'package:dio/dio.dart';
-import 'package:my_app/constants.dart';
-import 'package:my_app/model/tag.dart';
+import 'package:Food_Recipe/constants.dart';
+import 'package:Food_Recipe/model/tag.dart';
 
 class TagsRequester {
   static var dio = Dio();

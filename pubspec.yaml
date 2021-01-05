@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # 网络请求库
+  #网络请求库
   dio: ^3.0.10
 
   # The following adds the Cupertino Icons font to your application.
@@ -34,13 +34,32 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo.jpg"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
+  fonts:
+    - family: Century Gothic
+      fonts:
+        - asset: assets/fonts/GOTHIC.ttf
+          weight: 400
+    - family: Avenir
+      fonts:
+        - asset: assets/fonts/Avenir-Book.ttf
+          weight: 400
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+          weight: 600
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -53,6 +72,7 @@ flutter:
   assets:
     - assets/tomato.png
     - assets/ndj.jpg
+    - assets/logo.jpg
     - assets/category/ # 分类图片
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

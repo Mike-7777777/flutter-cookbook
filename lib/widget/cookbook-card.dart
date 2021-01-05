@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/constants.dart';
 import 'package:my_app/model/cookbook.dart';
+import 'package:my_app/values/fonts.dart';
 
 import 'package:my_app/widget/cookbook-detail.dart';
 
@@ -35,8 +36,10 @@ class CookbookCard extends StatelessWidget {
     // 超过两行的内容自动使用...
     var title = Text(
       this.cookbook.title,
+      style: AppFontsStyle.subtitleStyle,
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
+      textAlign: TextAlign.center,
     );
 
     // 图片与文字的排版

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_app/constants.dart';
 import 'package:my_app/requester/cookbooks.dart';
 import 'package:my_app/values/colors.dart';
+import 'package:my_app/values/values.dart';
 
 // 定义为无状态组件
 class CookbookDetail extends StatelessWidget {
@@ -41,18 +42,6 @@ class CookbookDetail extends StatelessWidget {
   }
 
   List<Widget> getListChildren(dynamic cookbook) {
-    // 字体样式
-    const titleStyle = TextStyle(
-      // color: Colors.blue,
-      fontSize: 18.0,
-      // height: 1.2,
-      fontWeight: FontWeight.bold,
-      // fontFamily: "Courier",
-      // background: Colors.yellow,
-      // decoration: TextDecoration.underline,
-      decorationStyle: TextDecorationStyle.dashed,
-    );
-
     //下面这部分需要用数据库代替
     // 菜品大图
     var pic = Image(
@@ -63,12 +52,14 @@ class CookbookDetail extends StatelessWidget {
     // 字体样式未来[低优先级]也可以整合在values文件加中的fonts.dart文件中
     var title = Text(
       cookbook.title,
-      maxLines: 9, overflow: TextOverflow.ellipsis, style: titleStyle,
+      style: AppFontsStyle.titleStyle,
+      maxLines: 9, overflow: TextOverflow.ellipsis,
       //TextStyle(height: 1.5, fontWeight: FontWeight.w600, fontSize: 25.0),
     );
     //菜谱简介
     var intro = Text(
       cookbook.brief,
+      style: AppFontsStyle.normalStyle,
       maxLines: 9,
       overflow: TextOverflow.ellipsis,
     );
@@ -158,6 +149,7 @@ class CookbookDetail extends StatelessWidget {
     return list;
   }
 
+  //原料卡片
   List<Widget> getYuanlilaoChildren(List<dynamic> ingredients) {
     var list = <Widget>[];
     for (var ing in ingredients) {
@@ -169,7 +161,7 @@ class CookbookDetail extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.0),
               //背景色
-              color: Colors.red,
+              color: AppColors.primaryElement,
               //加粗box的border，让每个box不粘在一起
               border: Border.all(
                 color: AppColors.primaryBackground,
@@ -186,7 +178,9 @@ class CookbookDetail extends StatelessWidget {
               ),
             ),
             child: Text(
+              //color: AppColors.primaryElementText,
               ing.name,
+              style: AppFontsStyle.normalStyle,
               textAlign: TextAlign.center,
             )),
       );
@@ -199,31 +193,36 @@ class CookbookDetail extends StatelessWidget {
     var list = <Widget>[];
     //https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20191101%2F17%2F1572601975-NVzXavQCRt.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg
     for (var step in steps) {
-      list.add(
-        Container(
-            padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-            width: 160.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              color: AppColors.primaryElement,
-              border: Border.all(
-                color: AppColors.primaryBackground,
-                width: 6,
-              ),
-              image: DecorationImage(
-                scale: 10,
-                image: NetworkImage(step.picture == null
-                    ? defaultBuZhouImage
-                    : "$BACKEND_ADDRESS/${step.picture}"),
-                fit: BoxFit.fitWidth,
-                //图片出现在中下
-                alignment: Alignment(0, 1),
-              ),
-            ),
-            child: Text(
-              "步骤 ${step.number} ${step.description}",
-            )),
-      );
+      list.add(Container(
+        padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+          color: AppColors.primaryBackground,
+          border: Border.all(
+            color: AppColors.primaryBackground,
+            width: 6,
+          ),
+          image: DecorationImage(
+            scale: 10,
+            image: NetworkImage(step.picture == null
+                ? defaultBuZhouImage
+                : "$BACKEND_ADDRESS/${step.picture}"),
+            fit: BoxFit.fitWidth,
+            //图片出现在中下
+            alignment: Alignment(0, 1),
+          ),
+        ),
+        child: Column(children: [
+          Text(
+            "Step ${step.number} :",
+            style: AppFontsStyle.subtitleStyle,
+          ),
+          Text(
+            "${step.description}",
+            style: AppFontsStyle.normalStyle,
+          )
+        ]),
+      ));
     }
     return list;
   }
