@@ -1,16 +1,21 @@
 // 菜谱卡片组件
 import 'package:flutter/material.dart';
+import 'package:my_app/constants.dart';
+import 'package:my_app/model/cookbook.dart';
 
 import 'package:my_app/widget/cookbook-detail.dart';
 
 // 定义为无状态组件
 class CookbookCard extends StatelessWidget {
+  final Cookbook cookbook;
+
+  CookbookCard(this.cookbook);
+
   @override
   Widget build(BuildContext context) {
     // 图片，指定为保证高度完全显示
     var pic = Image(
-      image: NetworkImage(
-          "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201510%2F20%2F20151020195211_hTCFE.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611990647&t=602b503888a90b3dfcc633cc330955ea"),
+      image: NetworkImage("$BACKEND_ADDRESS/${this.cookbook.preview}"),
       fit: BoxFit.fitHeight,
     );
 
@@ -29,7 +34,7 @@ class CookbookCard extends StatelessWidget {
     // 菜谱标题，设置最长显示长度为 2
     // 超过两行的内容自动使用...
     var title = Text(
-      "菜谱标题，有可能很长长长长长长长长长长长长长长长长长长长长长长长长长长。",
+      this.cookbook.title,
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
     );
@@ -45,7 +50,7 @@ class CookbookCard extends StatelessWidget {
         //如果Card作为菜谱也作为类别，点击后需要判断是菜谱还是类别。
         //如果是菜谱则跳转CookbookDetail，否则跳转CookbookCate。
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return CookbookDetail().build(context);
+          return CookbookDetail(this.cookbook.id).build(context);
         }));
       },
       child: column,

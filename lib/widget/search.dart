@@ -5,6 +5,7 @@ import 'package:my_app/requester/cookbooks.dart';
 import 'package:my_app/values/colors.dart';
 
 import 'package:my_app/constants.dart';
+import 'package:my_app/widget/search-res.dart';
 
 // 基于官方 SearchDelegate 实现搜索框
 class CookbookSearchDelegate extends SearchDelegate {
@@ -54,19 +55,30 @@ class CookbookSearchDelegate extends SearchDelegate {
     return backBtn;
   }
 
+  Future<dynamic> _search() {
+    if (this.tag == null) {
+      return CookbooksRequester.queryByKeyword(this.query);
+    }
+    return CookbooksRequester.queryByTagAndKeyword(this.tag.id, this.query);
+  }
+
   @override
   Widget buildResults(BuildContext context) {
     // 构建搜索结果并返回
     return FutureBuilder(
-      future: CookbooksRequester.queryAll(),
+      future: _search(),
       initialData: [],
       builder: (context, snapshot) {
         var datas = snapshot.data;
-        List<Widget> list = [];
-        for (var data in datas) {
-          list.add(Text(data["title"]));
-        }
-        return ListView(children: list);
+        // List<Widget> list = [];
+        // for (var data in datas) {
+        //   list.add(Text(data["title"]));
+        // }
+        // return ListView(children: list);
+        print(snapshot);
+        // if (datas != null) {
+        return SearchResult(datas);
+        // }
       },
     );
   }

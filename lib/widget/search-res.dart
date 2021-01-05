@@ -5,7 +5,11 @@ import 'package:my_app/values/colors.dart';
 import 'package:my_app/widget/cookbook-card.dart';
 
 // 定义为无状态组件
-class CookbookDetail extends StatelessWidget {
+class SearchResult extends StatelessWidget {
+  final List<dynamic> cookbooks;
+
+  SearchResult(this.cookbooks);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,23 +17,12 @@ class CookbookDetail extends StatelessWidget {
       backgroundColor: AppColors.primaryBackground,
     );
   }
-}
 
-Widget _getPageBody() {
-  var listview = ListView(
-    children: getListChildren(),
-  );
-  return listview;
-}
+  Widget _getPageBody() {
+    // 组件数组
+    var list = <Widget>[];
 
-List<Widget> getListChildren() {
-  // 组件数组
-  var list = <Widget>[];
-
-  // 添加推荐菜谱内容
-  list.add(
-    // 固定列数的 GridView
-    Padding(
+    var paddingGridView = Padding(
       padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
       child: GridView.count(
         childAspectRatio: 81 / 100,
@@ -40,20 +33,30 @@ List<Widget> getListChildren() {
         // 解决 GridView 嵌套在 ListView 中无法滑动问题
         physics: new NeverScrollableScrollPhysics(),
         // 设置内容
-        children: getGridChildren(),
+        children: _getGridChildren(),
       ),
-    ),
-  );
-  return list;
-}
+    );
 
-List<Widget> getGridChildren() {
-  var list = <Widget>[];
-  for (int i = 0; i < 10; i++) {
-    list.add(Padding(
-      padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 10.0),
-      child: CookbookCard(),
-    ));
+    // 添加顶部 10 的 padding
+    list.add(SizedBox(height: 10));
+    // 添加菜谱内容
+    list.add(paddingGridView);
+
+    return ListView(
+      children: list,
+    );
   }
-  return list;
+
+  List<Widget> _getGridChildren() {
+    var list = <Widget>[];
+
+    for (var cookbook in this.cookbooks) {
+      list.add(Padding(
+        padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 10.0),
+        child: CookbookCard(cookbook),
+      ));
+    }
+
+    return list;
+  }
 }

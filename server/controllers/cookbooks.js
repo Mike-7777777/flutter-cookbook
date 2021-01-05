@@ -19,6 +19,12 @@ router.get("/cookbooks",async ctx => {
     ctx.body = res
 })
 
+router.get("/cookbooks/random",async ctx => {
+    let res = {};
+    res = cS.getRandomCookbook()
+    ctx.body = res
+})
+
 router.get("/cookbooks/detail",async ctx => {
     let query = ctx.request.query
     // 检验必要参数

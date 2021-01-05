@@ -9,7 +9,7 @@ function queryAll() {
         a.id,
         a.title,
         a.brief,
-        b.url as priview
+        b.url as preview
         FROM cookbooks as a 
         LEFT JOIN pictures as b 
         ON a.p_id = b.id;
@@ -27,7 +27,7 @@ function queryById(id) {
         a.id,
         a.title,
         a.brief,
-        b.url as previewPicture
+        b.url as preview
         FROM cookbooks as a 
         LEFT JOIN pictures as b 
         ON a.p_id = b.id
@@ -75,7 +75,7 @@ function queryByKeyword(keyword) {
         a.id,
         a.title,
         a.brief,
-        b.url as priview
+        b.url as preview
         FROM cookbooks as a
         LEFT JOIN pictures as b ON a.p_id = b.id
         WHERE a.title LIKE ?
@@ -99,7 +99,7 @@ function queryByTagIdAndKeyword(tagId, keyword) {
         a.id,
         a.title,
         a.brief,
-        b.url as priview
+        b.url as preview
         FROM cookbooks as a
         LEFT JOIN pictures as b ON a.p_id = b.id
         WHERE a.id
@@ -123,7 +123,7 @@ function queryByTag(tagId) {
         a.id,
         a.title,
         a.brief,
-        b.url as priview
+        b.url as preview
         FROM cookbooks as a
         LEFT JOIN pictures as b ON a.p_id = b.id
         WHERE a.id
@@ -136,3 +136,20 @@ function queryByTag(tagId) {
     return cookbooks
 }
 module.exports.queryByTag = queryByTag
+
+
+function getRandomCookbook() {
+    let sqlQueryCookbook = `
+        SELECT 
+        a.id,
+        a.title,
+        a.brief,
+        b.url as priview
+        FROM cookbooks as a LEFT JOIN pictures as b ON a.p_id = b.id
+        ORDER BY random() limit 1;
+    `
+    let cookbook = db.prepare(sqlQueryCookbook).get()
+    
+    return cookbook
+}
+module.exports.getRandomCookbook = getRandomCookbook

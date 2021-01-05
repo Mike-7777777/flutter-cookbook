@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:my_app/constants.dart';
-import 'package:my_app/model/tag.dart';
 import 'package:my_app/requester/tags.dart';
 import 'package:my_app/values/values.dart';
 // import 'package:my_app/widget/cookbook-card.dart';
@@ -76,13 +75,10 @@ class _ClassificationPageState extends State<ClassificationPage> {
     var list = <Widget>[];
 
     for (var tag in tags) {
-      var t = Tag();
-      t.id = tag["id"];
-      t.name = tag["name"];
       list.add(
         Padding(
           padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-          child: TagCard(t),
+          child: TagCard(tag),
         ),
       );
     }
