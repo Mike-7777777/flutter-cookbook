@@ -2,8 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/constants.dart';
 import 'package:my_app/model/tag.dart';
-
-import 'package:my_app/widget/search.dart';
+import 'package:my_app/page/tag.dart';
 
 // 定义为无状态组件
 class TagCard extends StatelessWidget {
@@ -33,17 +32,24 @@ class TagCard extends StatelessWidget {
 
     // 图片与文字的排版
     var column = Column(
-      children: [rPic,Divider(
-          thickness:0.2,
-          height:40,
-          indent:1,
-          color:Colors.black,)],
+      children: [
+        rPic,
+        Divider(
+          thickness: 0.2,
+          height: 40,
+          indent: 1,
+          color: Colors.black,
+        )
+      ],
     );
     // 添加点击事件
     var inkColumn = InkWell(
       onTap: () {
-        showSearch(
-            context: context, delegate: CookbookSearchDelegate(this.tag));
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return TagPage(this.tag);
+        }));
+        // showSearch(
+        //     context: context, delegate: CookbookSearchDelegate(this.tag));
       },
       child: column,
     );
