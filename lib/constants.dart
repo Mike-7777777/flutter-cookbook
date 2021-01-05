@@ -4,9 +4,10 @@
 // 这个是我的 Genymotion 模拟器访问本机的ip
 // const BACKEND_HOST = "10.0.3.2";
 // const BACKEND_HOST = "192.168.0.105";
+const BACKEND_HOST = "192.168.0.3";
 
 // 这个是公网ip，需要服务器上已经启动
-const BACKEND_HOST = "mike.jabingp.cn";
+// const BACKEND_HOST = "mike.jabingp.cn";
 // 后端服务器端口
 const BACKEND_PORT = "3838";
 // 后端服务器地址
