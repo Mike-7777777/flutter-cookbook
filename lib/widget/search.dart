@@ -86,7 +86,9 @@ class CookbookSearchDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     // 输入文字时给出的提示
-    print(this.count++); // For debug
+    if (this.tag != null) {
+      return this.buildResults(context);
+    }
     return Container();
   }
 }
