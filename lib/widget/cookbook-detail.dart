@@ -9,10 +9,9 @@ import 'package:my_app/values/colors.dart';
 class CookbookDetail extends StatelessWidget {
   final int id;
   final String defaultYuanLiaoImage =
-      'https://www.pinclipart.com/picdir/middle/529-5297054_pork-meat-food-clipart-png.png';
+      'https://dummyimage.com/600x100/ffffff/fff';
 
-  final String defaultBuZhouImage =
-      'https://www.pinclipart.com/picdir/middle/529-5297054_pork-meat-food-clipart-png.png';
+  final String defaultBuZhouImage = 'https://dummyimage.com/600x100/ffffff/fff';
 
   CookbookDetail(this.id);
   @override

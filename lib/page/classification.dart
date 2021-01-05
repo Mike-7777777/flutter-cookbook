@@ -82,12 +82,6 @@ class _ClassificationPageState extends State<ClassificationPage> {
         ),
       );
     }
-    // for (int i = 0; i < 7; i++) {
-    //   list.add(Padding(
-    //     padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-    //     child: CookbookCard(),
-    //   ));
-    // }
     return list;
   }
 }

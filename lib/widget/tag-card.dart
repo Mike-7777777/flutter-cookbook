@@ -15,7 +15,7 @@ class TagCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // 图片，指定为保证高度完全显示
     var pic = Image(
-      image: new AssetImage("$TAG_IMAGE_FOLDER/${this.tag.name}.png"),
+      image: new AssetImage("$TAG_IMAGE_FOLDER/${this.tag.name}.JPG"),
       fit: BoxFit.fitHeight,
     );
 
@@ -31,31 +31,19 @@ class TagCard extends StatelessWidget {
       child: arPic,
     );
 
-    // 分类标题，设置最长显示长度为 1
-    // 超过一行的内容自动使用...
-    var title = Padding(
-      padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-      child: Text(
-        this.tag.name,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        textAlign: TextAlign.center,
-      ),
-    );
-
     // 图片与文字的排版
     var column = Column(
-      children: [rPic, title],
+      children: [rPic,Divider(
+          thickness:0.2,
+          height:40,
+          indent:1,
+          color:Colors.black,)],
     );
-
     // 添加点击事件
     var inkColumn = InkWell(
       onTap: () {
         showSearch(
             context: context, delegate: CookbookSearchDelegate(this.tag));
-        // Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        //   return CookbookDetail().build(context);
-        // }));
       },
       child: column,
     );
