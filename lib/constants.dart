@@ -29,7 +29,7 @@ const CLASSIFICATION_PAGE_TITLE = "Category";
 const LOCAL_PAGE_LABEL = "Download";
 const LOCAL_PAGE_TITLE = "Download";
 
-const LOCAL_PAGE_GASHAPON_TITLE = "扭蛋机";
-const LOCAL_PAGE_RECOMMEND_TITLE = "推荐菜谱";
+const LOCAL_PAGE_GASHAPON_TITLE = "Don't know what to eat today?";
+const LOCAL_PAGE_RECOMMEND_TITLE = "Recommendations";
 
-const SEARCH_HINT = "输入关键词搜索";
+const SEARCH_HINT = "Enter keyword to search";

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:my_app/requester/cookbooks.dart';
+import 'package:my_app/values/fonts.dart';
 import 'package:my_app/widget/cookbook-card.dart';
 import 'package:my_app/widget/cookbook-detail.dart';
 import 'package:my_app/widget/logo.dart';
@@ -43,24 +44,12 @@ Widget _getPageBody() {
 }
 
 List<Widget> getListChildren() {
-  // 字体样式
-  const titleStyle = TextStyle(
-    // color: Colors.blue,
-    fontSize: 18.0,
-    // height: 1.2,
-    fontWeight: FontWeight.bold,
-    // fontFamily: "Courier",
-    // background: Colors.yellow,
-    // decoration: TextDecoration.underline,
-    decorationStyle: TextDecorationStyle.dashed,
-  );
-
   // 组件数组
   var list = <Widget>[];
 
   // 图片，指定为保证高度完全显示
   var pic = Image(
-    image: new AssetImage("assets/ndj.jpg"),
+    image: AssetImage("assets/ndj.jpg"),
     fit: BoxFit.fitHeight,
   );
 
@@ -104,7 +93,7 @@ List<Widget> getListChildren() {
       padding: EdgeInsets.fromLTRB(16.0, 16.0, 0, 10.0),
       child: Text(
         LOCAL_PAGE_GASHAPON_TITLE,
-        style: titleStyle,
+        style: AppFontsStyle.subtitleStyle,
       ),
     ),
   );
@@ -114,16 +103,6 @@ List<Widget> getListChildren() {
     padding: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 10.0),
     // 点击事件
     child: inkRpic,
-    //child: ElevatedButton(
-    //child: Text("浮动按钮"),
-    //style: ButtonStyle(
-    //  backgroundColor: MaterialStateProperty.all(AppColors.primaryElement),
-    //  foregroundColor:
-    //      MaterialStateProperty.all(AppColors.primaryElementText),
-    //),
-    //color: AppColors.primaryElement,
-    //textColor: AppColors.primaryElementText),
-    //));
   ));
 
   // 推荐菜谱标题
@@ -131,7 +110,7 @@ List<Widget> getListChildren() {
       padding: EdgeInsets.fromLTRB(16.0, 16.0, 0, 10.0),
       child: Text(
         LOCAL_PAGE_RECOMMEND_TITLE,
-        style: titleStyle,
+        style: AppFontsStyle.titleStyle,
       )));
 
   // 添加推荐菜谱内容
@@ -150,7 +129,7 @@ Widget getFuturePaddingGrid() {
       return Padding(
         padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
         child: GridView.count(
-          childAspectRatio: 81 / 100,
+          childAspectRatio: 80 / 100,
           // 设置列数
           crossAxisCount: 2,
           // 解决 GridView 嵌套在 ListView 中报错问题
