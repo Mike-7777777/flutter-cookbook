@@ -144,7 +144,7 @@ function getRandomCookbook() {
         a.id,
         a.title,
         a.brief,
-        b.url as priview
+        b.url as preview
         FROM cookbooks as a LEFT JOIN pictures as b ON a.p_id = b.id
         ORDER BY random() limit 1;
     `
