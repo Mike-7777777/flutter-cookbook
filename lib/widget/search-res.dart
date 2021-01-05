@@ -1,4 +1,4 @@
-// 搜索结果样式
+// 搜索结果样式(与首页相同)
 
 import 'package:flutter/material.dart';
 import 'package:my_app/values/colors.dart';
